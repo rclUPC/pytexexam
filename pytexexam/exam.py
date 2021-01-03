@@ -2,7 +2,6 @@ import typing
 from .question import Question
 import random
 
-
 class Exam:
     """
     This class represents an exam.

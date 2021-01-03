@@ -11,7 +11,7 @@ class LatexExam:
     This class represents a exam, allowing users to print the exam and answer to a tex file
     or pdf (with latex pre-installed)
     """
-    def __init__(self, exam_title: str, exam: Exam):
+    def __init__(self, exam_title: str, exam_text: str, exam: Exam):
         self.__env = Environment(
             loader=PackageLoader('pytexexam', 'templates'),
             autoescape=False
@@ -28,7 +28,10 @@ class LatexExam:
         """Preamble of the latex file corresponds to the exam"""
         self.exam_title: str = exam_title
         """Exam name"""
-        self.exam_header: str = self.__env.get_template("examheader.tex").render(exam_title=self.exam_title)
+        self.exam_text: str = exam_text
+        """Exam text"""
+        self.exam_header: str = self.__env.get_template("examheader.tex").render(exam_title=self.exam_title,
+                                                                                exam_text=self.exam_text)
         """The presentation of the exam's header"""
 
     def add_user_preamble(self, preamble: str):
@@ -42,12 +45,24 @@ class LatexExam:
         :param question: Questions to print.
         :return: Character string representing the question content in latex.
         """
-        if question.get_answer_column() == 1:
+        if question.get_answer_column() == 0:
+            return self.__print_question_0(question)
+        elif question.get_answer_column() == 1:
             return self.__print_question_1(question)
         elif question.get_answer_column() == 2:
             return self.__print_question_2(question)
         else:
             return self.__print_question_4(question)
+
+    def __print_question_0(self, question: Question) -> str:
+        """
+        Print the question.
+
+        :param question: Questions to print.
+        :return: Character string representing the question content in latex.
+        """
+        template = self.__env.get_template("mcq0.tex")
+        return template.render(question=question.question)
 
     def __print_question_1(self, question: Question) -> str:
         """
