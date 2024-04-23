@@ -7,14 +7,15 @@ A simple library for writing and printing exam in Python.
 [![Downloads](https://pepy.tech/badge/pytexexam/week)](https://pepy.tech/project/pytexexam)
 [![Run on Repl.it](https://repl.it/badge/github/vungocbinh2009/pytexexam)](https://repl.it/github/vungocbinh2009/pytexexam)
 
-## About this branch
-- This branch includes the source code of the upcoming pytexexam version (3.0)
-- Objective: Redesign package to generalize exam generation process and include more question types instead of MCQ only in pytexexam 2.x
-The project is not complete yet.
+## Install
 
-Install from github, using pip (for testing only)
+Install from pypi
 ```shell
-pip install git+https://github.com/vungocbinh2009/pytexexam.git@pytexexam_3.x#egg=pytexexam
+pip install pytexexam
+```
+Install from github
+```shell
+pip install git+https://github.com/vungocbinh2009/pytexexam.git#egg=pytexexam
 ```
 
 ## How to use

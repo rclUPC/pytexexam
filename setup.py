@@ -1,12 +1,12 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name='pytexexam',
-    version='3.0',
-    packages=['pytexexam'],
+    version='3.0.1',
+    packages=find_packages(exclude=["test"]),
     include_package_data=True,
     url='https://github.com/vungocbinh2009/pytexexam',
     license='Apache License, Version 2.0',
